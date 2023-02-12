@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Pokédex</h1>
+      <h1 className="title">Pokédex</h1>
       <nav>
         <Link className="link" to="/">{`Home`}</Link>
         <Link className="link" to="/about">{`About`}</Link>
