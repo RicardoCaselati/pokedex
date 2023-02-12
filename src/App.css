@@ -1,8 +1,0 @@
-@font-face {
-  font-family: 'pokemon';
-  src: url(./fonts/PocketMonk-15ze.ttf) format('truetype');
-}
-
-.title{
-  font-family: 'pokemon';
-}

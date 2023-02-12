@@ -4,3 +4,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+body{
+  background-image: url(./images/pokemon-emerald-waterfall-pixel-moewalls.com.mp4);
+}
