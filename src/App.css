@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'pokemon';
+  src: url(./fonts/PocketMonk-15ze.ttf) format('truetype');
+}
+
+.bg {
+  background-image: url(images/background_img.png);
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  height: 100vh;
+  max-width: 100%;
+  width: 100vw;
+}
+
+.title {
+  position: relative;
+  font-family: 'pokemon';
+  text-align: center;
+  padding: 50px 0 0 0;
+  font-size: 90px;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-fill-color: #ffcb05;
+  -webkit-text-stroke-color: #2a75bb;
+}
+
+.container {
+  margin: 2% 10% 0 10%;
+  height: 80%;
+  position: relative;
+  overflow: scroll;
+}
+
+.container::-webkit-scrollbar { 
+  display: none; 
+}
+
+.container-inner {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.container-inner::-webkit-scrollbar { 
+  display: none; 
+}

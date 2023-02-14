@@ -1,61 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import CardPokemon from '../components/CardPokemon';
-import styles from './Home.module.css'
+import { IAllPokemons, IType, IPokemon } from '../interfaces/AllPokemons';
+import styles from './Home.module.css';
 
 const Home = () => {
-  const [pokemonListName, setPokemonListName] = useState<any[]>([]);
-  const [pokemonListImage, setPokemonListImage] = useState<any[]>([]);
+  const [pokemonList, setPokemonList] = useState<IAllPokemons[]>([]);
 
   useEffect(() => {
-    const fetchPokemonName = async () => {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
-      const data = await response.json();
-      const listName = data.results;
+    const fetchPokemon = async () => {
+      const pokemonNamesResponse = await fetch('https://pokeapi.co/api/v2/pokemon/');
+      const pokemonNamesData = await pokemonNamesResponse.json();
+      const pokemonNamesList = pokemonNamesData.results.map((pokemon: any, index: number) => {
+        return { id: index + 1, name: pokemon.name };
+      });
 
-      const objectName = listName.map((pokemon: any, index: number) => {
-        const objName = { id: index + 1, name: pokemon.name }
-        return objName;
-      })
+      const pokemonImages = await Promise.all(pokemonNamesList.map(async (pokemon: IPokemon) => {
+        const pokemonDescribeResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`);
+        const pokemonDescribeData = await pokemonDescribeResponse.json();
+        const { sprites: { other: { dream_world } }, types } = pokemonDescribeData;
+        const pokeTypes = types.map((typeObject: IType) => {
+          return { name: typeObject.type.name };
+        });
 
-      setPokemonListName(objectName);
-    };
-
-    const fetchPokemonImg = async () => {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
-      const data = await response.json();
-      const pokemons = data.results;
-
-      const img = await Promise.all(pokemons.map(async (_pokemon: any, index: any) => {
-        const eachPokemonDescribe = await fetch(`https://pokeapi.co/api/v2/pokemon/${index + 1}`)
-        const eachPokemonDescribeResult = await eachPokemonDescribe.json();
-        const { sprites: { other: { dream_world } } } = eachPokemonDescribeResult;
-        return dream_world
+        return { ...pokemon, url: dream_world.front_default, type: pokeTypes };
       }));
 
-      const imgObj = img.map((eachUrl, index) => {
-        const obj = { id: index + 1, url: eachUrl.front_default }
-        return obj;
-      })
-
-      setPokemonListImage(imgObj);
+      setPokemonList(pokemonImages);
     };
 
-    fetchPokemonName();
-    fetchPokemonImg()
+    fetchPokemon();
   }, []);
 
-  const pokemonCardToRender = pokemonListName.map((pokemon) => {
-    const image = pokemonListImage.find((image) => image.id === pokemon.id);
-    return image ? { ...pokemon, url: image.url } : pokemon;
-  });
+  useEffect(() => {
+    localStorage.setItem('pokemonList', JSON.stringify(pokemonList));
+  }, [pokemonList]);
+
+  const storedPokemonList = localStorage.getItem('pokemonList');
+  const parsedPokemonList = storedPokemonList ? JSON.parse(storedPokemonList) : [];
 
   return (
-    <div className={ styles.container }>
-      {pokemonCardToRender.map((eachPokemon) => (
+    <div className={styles.containerHome}>
+      {parsedPokemonList.map((pokemon: IAllPokemons, index: number) => (
         <CardPokemon
-          id={eachPokemon.id}
-          url={eachPokemon.url}
-          name={eachPokemon.name}
+          key={pokemon.id}
+          id={pokemon.id}
+          url={pokemon.url}
+          name={pokemon.name}
+          type={pokemon.type}
         />
       ))}
     </div>
