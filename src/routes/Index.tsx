@@ -2,6 +2,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
+import PokemonDetail from '../pages/PokemonDetail';
 
 function Router() {
 
@@ -9,7 +10,7 @@ function Router() {
     <div className="container" >
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route />
+        <Route path="/:id" element={ <PokemonDetail /> } />
         <Route />
         <Route />
         <Route />
