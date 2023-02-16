@@ -54,9 +54,9 @@ const CardPokemon = ({
     <div className={styles.container} key={id}>
       <div className={styles.card}>
         <div className={styles.cardFront}>
-          <img className={styles.img} src={url} alt="pokemon_image" />
-          <p className={styles.id}>{"Nº" + id?.toString().padStart(4, '0')}</p>
-          <p className={styles.name}>{name}</p>
+          <img data-testid="pokemon-image" className={styles.img} src={url} alt="pokemon_image" />
+          <p data-testid="pokemon-front-id" className={styles.id}>{"Nº" + id?.toString().padStart(4, '0')}</p>
+          <p data-testid="pokemon-front-name" className={styles.name}>{name}</p>
           <div className={styles.typeContainer}>
             {toRender.map((eachType, index) => {
               return (
@@ -71,12 +71,13 @@ const CardPokemon = ({
         </div>
         <div className={styles.cardBack}>
           <div className={styles.mainContainer}>
-            <h5>{name}</h5>
-            <span className={styles.id}>{"Nº" + id?.toString().padStart(4, '0')}</span>
+            <h5 data-testid="pokemon-back-grid">{name}</h5>
+            <span data-testid="pokemon-back-id" className={styles.id}>{"Nº" + id?.toString().padStart(4, '0')}</span>
           </div>
-          <span>{`height: ${heightToRender}m`}</span>
-          <span>{`weight: ${weightToRender}kg`}</span>
+          <span data-testid="pokemon-back-height">{`height: ${heightToRender}m`}</span>
+          <span data-testid="pokemon-back-weight">{`weight: ${weightToRender}kg`}</span>
           <button
+            data-testid="button-back-toDetails"
             value={id}
             className={styles.btn}
             type="button"

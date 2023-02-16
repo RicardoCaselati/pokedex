@@ -70,7 +70,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <div className={styles.containerHome}>
+      <div data-testid="pokemon-grid" className={styles.containerHome}>
         {memoizedPokemonList.map((pokemon: IAllPokemons, index: number) => (
           <CardPokemon
             key={pokemon.id}
