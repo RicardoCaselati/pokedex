@@ -21,7 +21,7 @@ cd pokedex
 
 Então instale as dependências rodando:
 ````
-npm start
+npm install
 ````
 
 após terminar a instalação, inicie o projeto rodando:
