@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import styles from '../components/CardPokemon.module.css'
+import styles from './PokemonDetail.module.css'
 import { IAllPokemonsOnDetails } from '../interfaces/AllPokemons';
 import BarChart from '../components/BarChart';
 import TypeTag from '../components/TypeTag';

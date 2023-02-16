@@ -1,9 +1,5 @@
-footer{
+.containerFooter {
   background-color: rgb(10, 19, 105);
-  
-}
-
-.containerFooter{
   display: flex;
   justify-content: center;
   color: white;
@@ -12,4 +8,42 @@ footer{
   align-items: center;
   position: relative;
   margin-top: 20px;
+  bottom: 0%;
+}
+
+@media (min-width:320px) { 
+  .containerFooter {
+    height: 190px;
+    margin-top: 350px;
+  }
+}
+@media screen and (min-width:480px) and (max-width:799px) { 
+  .containerFooter {
+    height: 190px;
+    margin-top: 350px;
+  }
+ }
+@media screen and (min-width:600px) and (max-width:800px) { 
+  .containerFooter {
+    height: 190px;
+    margin-top: 340px;
+  }
+ }
+@media screen and (min-width:801px) and (max-width:1024px) { 
+  .containerFooter {
+    height: 190px;
+    margin-top: 340px;
+  }
+ }
+@media screen and (min-width:1025px) and (max-width:1280px) { 
+  .containerFooter {
+    height: 190px;
+    margin-top: 350px;
+  }
+}
+@media (min-width:1281px) { 
+  .containerFooter {
+    height: 190px;
+    margin-top: 350px;
+  }
 }
