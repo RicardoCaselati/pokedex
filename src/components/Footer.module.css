@@ -1,0 +1,15 @@
+footer{
+  background-color: rgb(10, 19, 105);
+  
+}
+
+.containerFooter{
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  height: 87px;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+}

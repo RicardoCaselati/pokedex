@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 @font-face {
   font-family: 'pokemon';
   src: url(./fonts/PocketMonk-15ze.ttf) format('truetype');
@@ -17,8 +21,8 @@
   position: relative;
   font-family: 'pokemon';
   text-align: center;
-  padding: 50px 0 0 0;
-  font-size: 90px;
+  padding: 14px 0 0 0;
+  font-size: 80px;
   -webkit-text-stroke-width: 5px;
   -webkit-text-fill-color: #ffcb05;
   -webkit-text-stroke-color: #2a75bb;
